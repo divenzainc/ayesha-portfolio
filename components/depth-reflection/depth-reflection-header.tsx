@@ -9,13 +9,10 @@ export function DepthReflectionHeader() {
             Depth Reflection
           </p>
           <h1 className="max-w-4xl text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-6xl">
-            In-depth Lesson Reflections
+            Learning Together
           </h1>
           <p className="max-w-3xl text-base leading-8 text-muted-foreground sm:text-lg">
-            Five practicum lessons are presented through pre-teaching reflection,
-            post-teaching reflection, lesson evidence, and references. Each
-            reflection shows how planning, teaching, assessment, and classroom
-            response shaped my professional growth.
+            Peer Observation and Collaborative Reflection
           </p>
         </div>
 
