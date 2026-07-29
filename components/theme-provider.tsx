@@ -12,26 +12,33 @@ interface ThemeContextValue {
 const ThemeContext = React.createContext<ThemeContextValue | null>(null)
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = React.useState<Theme>(() => {
-    if (typeof window === "undefined") {
-      return "light"
-    }
+  const [theme, setThemeState] = React.useState<Theme>("light")
+  const hasLoadedSavedTheme = React.useRef(false)
 
-    const savedTheme = window.localStorage.getItem("theme")
+  React.useEffect(() => {
+    const timeoutId = window.setTimeout(() => {
+      const savedTheme = window.localStorage.getItem("theme")
 
-    if (savedTheme === "dark" || savedTheme === "light") {
-      return savedTheme
-    }
+      hasLoadedSavedTheme.current = true
 
-    return "light"
-  })
+      if (savedTheme === "dark" || savedTheme === "light") {
+        setThemeState(savedTheme)
+      }
+    }, 0)
+
+    return () => window.clearTimeout(timeoutId)
+  }, [])
 
   React.useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark")
-    window.localStorage.setItem("theme", theme)
+
+    if (hasLoadedSavedTheme.current) {
+      window.localStorage.setItem("theme", theme)
+    }
   }, [theme])
 
   const setTheme = React.useCallback((nextTheme: Theme) => {
+    hasLoadedSavedTheme.current = true
     setThemeState(nextTheme)
   }, [])
 
