@@ -1,4 +1,4 @@
-import { GraduationCapIcon, HeartHandshakeIcon, SparklesIcon } from "lucide-react";
+import { AwardIcon, GraduationCapIcon, HeartIcon } from "lucide-react";
 
 export function ArtefactsPageHeader() {
   return (
@@ -21,23 +21,26 @@ export function ArtefactsPageHeader() {
         <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
           {[
             {
-              icon: HeartHandshakeIcon,
+              icon: HeartIcon,
               label: "Learner Care",
+              className: "bg-red-50 text-red-600 dark:bg-red-950/40 dark:text-red-300",
             },
             {
-              icon: SparklesIcon,
+              icon: AwardIcon,
               label: "Discipline and Service",
+              className: "bg-yellow-50 text-yellow-600 dark:bg-yellow-950/40 dark:text-yellow-300",
             },
             {
               icon: GraduationCapIcon,
               label: "Lifelong Learning",
+              className: "bg-neutral-100 text-black dark:bg-white dark:text-black",
             },
           ].map((item) => (
             <div
               key={item.label}
               className="flex items-center gap-3 rounded-lg border bg-muted/40 p-4"
             >
-              <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+              <span className={`flex size-10 shrink-0 items-center justify-center rounded-lg ${item.className}`}>
                 <item.icon data-icon="inline-start" />
               </span>
               <span className="text-sm font-semibold text-foreground">
