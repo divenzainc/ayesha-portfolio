@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
-import { ThemeToggle } from "@/components/theme-toggle";
+import "@fontsource/poppins/400.css";
+import "@fontsource/poppins/500.css";
+import "@fontsource/poppins/600.css";
+import "@fontsource/poppins/700.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -16,18 +19,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      suppressHydrationWarning
       className="h-full antialiased"
+      suppressHydrationWarning
     >
       <body className="min-h-full bg-background text-foreground">
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
-          <div className="flex min-h-svh flex-col">
-            <header className="flex h-16 shrink-0 items-center justify-end border-b bg-background px-4 sm:px-6 lg:px-8">
-              <ThemeToggle />
-            </header>
-            <div className="flex flex-1 flex-col">{children}</div>
-          </div>
-        </ThemeProvider>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );
