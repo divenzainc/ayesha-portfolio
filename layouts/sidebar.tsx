@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { XIcon } from "lucide-react";
+import { ChevronDownIcon, XIcon } from "lucide-react";
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
@@ -9,8 +9,8 @@ import { cn } from "@/lib/utils";
 
 const portfolioPages = [
   {
-    href: "/learner-profile",
-    label: "Learner Profile",
+    href: "/",
+    label: "Home - Learner Profile",
     hover: "hover:border-sky-300 hover:bg-sky-500 hover:text-white",
   },
   {
@@ -22,6 +22,11 @@ const portfolioPages = [
     href: "/reflections",
     label: "Reflections",
     hover: "hover:border-cyan-300 hover:bg-cyan-500 hover:text-white",
+    children: [
+      { href: "/reflections/supervisor", label: "Supervisor" },
+      { href: "/reflections/mentor", label: "Mentor" },
+      { href: "/reflections/student", label: "Student" },
+    ],
   },
   {
     href: "/depth-reflection",
@@ -61,6 +66,8 @@ interface SidebarProps {
 }
 
 export function Sidebar({ isOpen, onClose }: SidebarProps) {
+  const [expandedItem, setExpandedItem] = React.useState<string | null>(null);
+
   React.useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
 
@@ -107,22 +114,82 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
         </div>
 
         <nav className="scrollbar-hidden flex flex-1 flex-col gap-2 overflow-y-auto px-4 py-5">
-          {portfolioPages.map((page, index) => (
-            <Link
-              key={page.href}
-              href={page.href}
-              className={cn(
-                "group flex items-center justify-between rounded-lg border bg-muted/25 px-4 py-3 text-sm font-medium text-foreground transition-colors",
-                page.hover
-              )}
-              onClick={onClose}
-            >
-              <span>{page.label}</span>
-              <span className="text-xs text-muted-foreground transition-colors group-hover:text-primary-foreground/80">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-            </Link>
-          ))}
+          {portfolioPages.map((page, index) => {
+            const isExpanded = expandedItem === page.href;
+
+            if (page.children) {
+              return (
+                <div key={page.href} className="flex flex-col gap-2">
+                  <button
+                    type="button"
+                    aria-expanded={isExpanded}
+                    className={cn(
+                      "group flex items-center justify-between rounded-lg border bg-muted/25 px-4 py-3 text-left text-sm font-medium text-foreground transition-colors",
+                      page.hover
+                    )}
+                    onClick={() =>
+                      setExpandedItem((current) =>
+                        current === page.href ? null : page.href
+                      )
+                    }
+                  >
+                    <span>{page.label}</span>
+                    <span className="flex items-center gap-2 text-xs text-muted-foreground transition-colors group-hover:text-primary-foreground/80">
+                      {String(index + 1).padStart(2, "0")}
+                      <ChevronDownIcon
+                        data-icon="inline-start"
+                        className={cn(
+                          "transition-transform",
+                          isExpanded ? "rotate-180" : "rotate-0"
+                        )}
+                      />
+                    </span>
+                  </button>
+
+                  <div
+                    className={cn(
+                      "grid overflow-hidden transition-[grid-template-rows,opacity] duration-300",
+                      isExpanded
+                        ? "grid-rows-[1fr] opacity-100"
+                        : "grid-rows-[0fr] opacity-0"
+                    )}
+                  >
+                    <div className="min-h-0">
+                      <div className="ml-4 grid gap-2 border-l border-border pl-3">
+                        {page.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className="rounded-lg border bg-background px-4 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:border-cyan-300 hover:bg-cyan-500 hover:text-white"
+                            onClick={onClose}
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+
+            return (
+              <Link
+                key={page.href}
+                href={page.href}
+                className={cn(
+                  "group flex items-center justify-between rounded-lg border bg-muted/25 px-4 py-3 text-sm font-medium text-foreground transition-colors",
+                  page.hover
+                )}
+                onClick={onClose}
+              >
+                <span>{page.label}</span>
+                <span className="text-xs text-muted-foreground transition-colors group-hover:text-primary-foreground/80">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+              </Link>
+            );
+          })}
         </nav>
       </aside>
     </>

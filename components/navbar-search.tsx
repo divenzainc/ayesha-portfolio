@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const searchablePages = [
-  { href: "/learner-profile", label: "Learner Profile" },
+  { href: "/", label: "Learner Profile" },
   { href: "/teaching-philosophy", label: "Teaching Philosophy" },
   { href: "/reflections", label: "Reflections" },
   { href: "/depth-reflection", label: "Depth Reflection" },
