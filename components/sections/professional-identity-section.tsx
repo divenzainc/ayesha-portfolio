@@ -23,37 +23,23 @@ export function ProfessionalIdentitySection() {
         </div>
 
         <div className="grid gap-5 text-base leading-8 text-muted-foreground">
+          <h3 className="text-xl font-semibold tracking-tight text-foreground">
+            Who Am I as an Educator?
+          </h3>
           <p>
-            I am Ayesha Nilmini Sumanasena, a government Teacher of English in
-            Sri Lanka with over 18 years of teaching experience in secondary
-            education. Throughout my career, I have been committed to creating
-            meaningful learning experiences that support learners with diverse
-            backgrounds, abilities, and aspirations.
-          </p>
-          <p>
-            Alongside my school teaching career, I have also served as a
-            Visiting Lecturer at the Sri Lanka Institute of Advanced
-            Technological Education (SLIATE), where I taught Psychology,
-            Listening Skills, and English-related courses. These experiences
-            have enabled me to work with learners across different educational
-            settings while strengthening my understanding of language education
-            and teacher development.
-          </p>
-          <p>
-            My professional journey reflects a commitment to lifelong learning.
-            I have continued to expand my academic and professional knowledge
-            through postgraduate study, teacher education, and reflective
-            practice. Completing the Master of Arts in Linguistics at the
-            University of Kelaniya and currently reading for the Master of Arts
-            in Teaching English as a Second Language (MA TESL) at the
-            Postgraduate Institute of English, The Open University of Sri Lanka,
-            has deepened both my theoretical understanding and classroom
-            practice.
+            I believe that language learning should be meaningful, inclusive,
+            and learner-centred. My classroom encourages active participation,
+            collaboration, creativity, and critical thinking while creating a
+            safe environment where every learner feels respected and confident
+            to communicate in English.
           </p>
           <p className="border-l-4 border-primary bg-background px-5 py-4 text-foreground">
-            For me, teaching is not simply the delivery of knowledge. It is a
-            continuous process of learning, reflection, adaptation, and
-            professional growth.
+            Reflection is at the heart of my professional practice. Every
+            lesson provides an opportunity to evaluate my teaching, celebrate
+            learners&apos; progress, and identify ways to improve. I view
+            professional learning as a continuous journey rather than a final
+            destination, and I remain committed to developing my knowledge and
+            practice for the benefit of every learner I teach.
           </p>
         </div>
       </div>

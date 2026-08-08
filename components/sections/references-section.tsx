@@ -1,8 +1,36 @@
-const references = [
-  "Brookfield, S. D. (2017). Becoming a critically reflective teacher (2nd ed.). Jossey-Bass.",
-  "Farrell, T. S. C. (2015). Promoting teacher reflection in second language education: A framework for TESOL professionals. Routledge.",
-  "Larrivee, B. (2008). Development of a tool to assess teachers' level of reflective practice. Reflective Practice, 9(3), 341-360.",
-  "Schon, D. A. (1983). The reflective practitioner: How professionals think in action. Basic Books.",
+type ReferencePart = { text: string; italic?: boolean };
+
+const references: ReferencePart[][] = [
+  [
+    { text: "Brookfield, S. D. (2017). " },
+    { text: "Becoming a critically reflective teacher", italic: true },
+    { text: " (2nd ed.). Jossey-Bass." },
+  ],
+  [
+    { text: "Farrell, T. S. C. (2015). " },
+    {
+      text: "Promoting teacher reflection in second language education: A framework for TESOL professionals",
+      italic: true,
+    },
+    { text: ". Routledge." },
+  ],
+  [
+    {
+      text: "Larrivee, B. (2008). Development of a tool to assess teachers' level of reflective practice. ",
+    },
+    { text: "Reflective Practice", italic: true },
+    { text: ", " },
+    { text: "9", italic: true },
+    { text: "(3), 341–360." },
+  ],
+  [
+    { text: "Schön, D. A. (1983). " },
+    {
+      text: "The reflective practitioner: How professionals think in action",
+      italic: true,
+    },
+    { text: ". Basic Books." },
+  ],
 ];
 
 export function ReferencesSection() {
@@ -15,13 +43,25 @@ export function ReferencesSection() {
         <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground">
           Sources for this chapter
         </h2>
-        <ol className="mt-8 grid gap-4 text-sm leading-7 text-muted-foreground">
+        
+        <div className="mt-8 grid gap-4 text-sm leading-7 text-muted-foreground">
           {references.map((reference) => (
-            <li key={reference} className="rounded-lg border bg-muted/35 p-4">
-              {reference}
-            </li>
+            <div
+              key={reference.map((part) => part.text).join("")}
+              className="rounded-lg border bg-muted/35 p-4"
+            >
+              <p style={{ textIndent: "-1.5rem", paddingLeft: "1.5rem" }}>
+                {reference.map((part, index) =>
+                  part.italic ? (
+                    <em key={index}>{part.text}</em>
+                  ) : (
+                    <span key={index}>{part.text}</span>
+                  )
+                )}
+              </p>
+            </div>
           ))}
-        </ol>
+        </div>
       </div>
     </section>
   );

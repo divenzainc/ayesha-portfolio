@@ -1,8 +1,17 @@
+import { GraduationCap, Quote } from "lucide-react";
 import Image from "next/image";
 
-import { Button } from "@/components/ui/button";
-
 export function HeroSection() {
+  const credentials = [
+    "Government Teacher of English",
+    "Former English Instructor - Sri Lanka Military Academy (SLMA)",
+    "Former Visiting Lecturer - Sri Lanka Institute of Advanced Technological Education (SLIATE)",
+    "Official Evaluator - GCE Ordinary Level (O/L) Examination, Department of Examinations, Sri Lanka",
+    "M.A. (Linguistics), University of Kelaniya",
+    "M.A. TESL Candidate, The Open University of Sri Lanka",
+    "Reflective English Language Educator",
+  ];
+
   return (
     <section className="relative flex w-full overflow-hidden bg-background lg:min-h-[calc(100svh-4rem)]">
       <Image
@@ -16,14 +25,14 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-sky-950/28 dark:bg-sky-950/44" />
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,6,23,0.68)_0%,rgba(14,165,233,0.3)_48%,rgba(37,99,235,0.12)_100%)]" />
 
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-8 px-4 py-8 sm:px-6 sm:py-12 md:gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(340px,480px)] lg:px-8 lg:py-20">
-        <div className="flex max-w-3xl flex-col gap-5 text-center sm:text-left lg:gap-6">
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl items-start gap-8 px-4 py-6 sm:px-6 sm:py-10 md:gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(340px,480px)] lg:px-8 lg:py-16">
+        <div className="flex max-w-3xl flex-col gap-4 text-center sm:text-left lg:gap-5">
           <p className="mx-auto w-fit border-b-2 border-sky-300 pb-2 text-xs font-semibold uppercase tracking-[0.18em] text-sky-200 sm:mx-0 sm:text-sm sm:tracking-[0.22em]">
             Welcome to My Portfolio
           </p>
 
-          <div className="flex flex-col gap-4">
-            <h1 className="text-3xl font-semibold leading-tight tracking-tight text-white min-[380px]:text-4xl sm:text-6xl lg:text-7xl">
+          <div className="flex flex-col gap-3">
+            <h1 className="text-3xl font-semibold leading-tight tracking-tight text-white min-[380px]:text-3xl sm:text-4xl lg:text-5xl">
               FROM EXPERIENCE TO REFLECTION
             </h1>
             <p className="mx-auto max-w-2xl text-base leading-7 text-sky-50 sm:mx-0 sm:text-2xl sm:leading-9">
@@ -31,17 +40,35 @@ export function HeroSection() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-3 pt-2 sm:flex-row">
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
-              Explore Portfolio
-            </Button>
-            <Button variant="outline">View Reflection Journey</Button>
-          </div>
+          <blockquote className="mx-auto max-w-2xl space-y-2 border-l-2 border-sky-300/50 pl-4 text-left text-sm italic leading-6 text-sky-100/90 sm:mx-0 sm:text-base sm:leading-7">
+            <Quote className="h-6 w-6 text-sky-300/70" aria-hidden="true" />
+            <p className="font-semibold not-italic text-sky-100">
+              Every Classroom Leaves a Footprint
+            </p>
+            <p>
+              Every classroom has changed me. Some taught me patience. Some strengthened my
+              confidence. Some challenged my assumptions. Some reminded me that teaching is
+              not simply about completing lessons; it is about inspiring people.
+            </p>
+            <p>
+              Every learner has contributed to the educator I continue to become. This
+              portfolio is the story of those classrooms, those learners, and the
+              professional journey they shaped!
+            </p>
+          </blockquote>
 
-          <div className="grid max-w-2xl grid-cols-1 gap-2 pt-2 text-left text-sm text-sky-50/90 sm:grid-cols-3 sm:gap-3 sm:pt-4">
-            <p className="border-l border-sky-300 pl-4">English language educator</p>
-            <p className="border-l border-sky-300 pl-4">Reflective teaching practice</p>
-            <p className="border-l border-sky-300 pl-4">Master&apos;s degree journey</p>
+          <div className="max-w-2xl rounded-2xl border border-white/20 bg-slate-950/35 p-5 text-left text-sky-50 backdrop-blur-sm sm:p-6">
+            <p className="text-base font-semibold uppercase tracking-[0.28em] text-sky-100 sm:text-lg">
+              AYESHA NILMINI SUMANASENA
+            </p>
+            <div className="mt-4 grid gap-x-6 gap-y-3 text-sm leading-6 text-sky-50/90 sm:text-base md:grid-cols-2">
+              {credentials.map((credential) => (
+                <div key={credential} className="flex items-start gap-3">
+                  <GraduationCap className="mt-0.5 h-4 w-4 shrink-0 text-sky-300" aria-hidden="true" />
+                  <p>{credential}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 

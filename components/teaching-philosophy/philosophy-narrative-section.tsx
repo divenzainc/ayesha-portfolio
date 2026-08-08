@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function PhilosophyNarrativeSection() {
   return (
     <section className="bg-muted/45 px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
@@ -13,11 +15,10 @@ export function PhilosophyNarrativeSection() {
 
         <div className="grid gap-5 text-base leading-8 text-muted-foreground">
           <p>
-            When I entered my first classroom, I believed that effective teaching
-            meant explaining lessons clearly and completing the planned
-            activities successfully. Nearly two decades of teaching, together
-            with my experiences during the MA TESL programme, have gradually
-            transformed that belief.
+            What I Believe About Learning ?
+            <br />
+            "A teacher's philosophy is not built in a university lecture hall; it is shaped by every learner, every classroom and every reflection."
+            
           </p>
           <p>
             Today, I understand that meaningful learning begins long before a
@@ -25,6 +26,23 @@ export function PhilosophyNarrativeSection() {
             backgrounds, emotions, abilities, interests, aspirations, and the
             context in which learning takes place.
           </p>
+
+          <figure className="my-2">
+            <div className="relative aspect-16/11 overflow-hidden rounded-2xl border shadow-lg">
+              <Image
+                src="/teaching-2.jpeg"
+                alt="Ayesha seated with a row of secondary school learners under a tree"
+                fill
+                sizes="(min-width: 1024px) 780px, 92vw"
+                className="object-cover object-top"
+              />
+            </div>
+            <figcaption className="mt-3 text-sm text-muted-foreground">
+              With learners during the Teaching Practicum — every classroom brought
+              a different group of learners to understand.
+            </figcaption>
+          </figure>
+
           <p>
             Teaching English in rural Sri Lankan classrooms has shown me that no
             two learners learn in exactly the same way. Some learners confidently

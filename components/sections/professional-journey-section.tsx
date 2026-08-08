@@ -87,51 +87,26 @@ export function ProfessionalJourneySection() {
         </div>
 
         <div className="relative">
-          <div className="absolute left-5 top-0 h-full w-px bg-border sm:left-1/2" />
+          <div className="absolute left-5 top-2 h-[calc(100%-1rem)] w-px bg-border" />
           <div className="grid gap-6">
-            {milestones.map((milestone, index) => {
+            {milestones.map((milestone) => {
               const Icon = milestone.icon;
-              const isRight = index % 2 === 1;
 
               return (
                 <article
                   key={`${milestone.year}-${milestone.title}`}
-                  className="relative grid gap-4 sm:grid-cols-[1fr_3rem_1fr] sm:items-center"
+                  className="relative grid grid-cols-[2.5rem_1fr] items-start gap-4"
                 >
-                  <div
-                    className={
-                      isRight
-                        ? "hidden sm:block"
-                        : "ml-14 rounded-lg border bg-background p-5 shadow-sm transition-colors hover:border-primary/50 sm:ml-0"
-                    }
-                  >
-                    {!isRight && (
-                      <MilestoneContent
-                        year={milestone.year}
-                        title={milestone.title}
-                        description={milestone.description}
-                      />
-                    )}
-                  </div>
-
-                  <div className="absolute left-0 top-1 flex size-10 items-center justify-center rounded-full border bg-primary text-primary-foreground shadow-sm sm:static sm:mx-auto">
+                  <div className="relative z-10 flex size-10 items-center justify-center rounded-full border bg-primary text-primary-foreground shadow-sm">
                     <Icon data-icon="inline-start" />
                   </div>
 
-                  <div
-                    className={
-                      isRight
-                        ? "ml-14 rounded-lg border bg-background p-5 shadow-sm transition-colors hover:border-primary/50 sm:ml-0"
-                        : "hidden sm:block"
-                    }
-                  >
-                    {isRight && (
-                      <MilestoneContent
-                        year={milestone.year}
-                        title={milestone.title}
-                        description={milestone.description}
-                      />
-                    )}
+                  <div className="rounded-lg border bg-background p-5 shadow-sm transition-colors hover:border-primary/50">
+                    <MilestoneContent
+                      year={milestone.year}
+                      title={milestone.title}
+                      description={milestone.description}
+                    />
                   </div>
                 </article>
               );
